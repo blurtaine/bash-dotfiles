@@ -20,15 +20,3 @@ case ${TERM} in
 esac
 
 [ -r /usr/share/bash-completion/bash_completion   ] && . /usr/share/bash-completion/bash_completion
-
-#################
-#    ALIASES    #
-#################
-
-alias sudo='sudo '
-alias vim='nvim'
-
-alias rm='rm -i'
-alias mv='rm -i'
-alias cp='cp -i'
-
