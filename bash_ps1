@@ -38,18 +38,27 @@ function prompt_command() {
     local resetColor="\[\e[0m\]"
     local resetEx="\[\x1b[0m\]"
 
-    local dot=""
-    local doubleArrow=""
+    local dot="$(printf ${white}'\xE2\x80\xA2'${lightGray})"
+    local doubleArrow="$(printf ${white}'\xc2\xbb'${lightGray})"
 
-    
+############## PROMPT PARTS ################
+
+    local at="$(printf ${lightCyan}@${lightGray})"
+    local hostname="$(printf ${lightMagenta}${HOSTNAME}${lightGray})"
+    local dir="$(printf ${lightGray}[${lightGreen}"$(dirs)"${lightGray}])"
+    local error=""
+
 
     if [ "${UID}" -eq 0 ]; then
-        local user="$(printf ${lightRed}${USER}${resetEx})"
+        local user="$(printf ${lightRed}${USER}${lightGray})"
     else
-        local user="$(printf ${lightBlueEx}${USER}${resetEx})"
+        local user="$(printf ${lightYellow}${USER}${lightGray})"
+    fi
+       
+
+    if [ $EXIT != 0 ]; then
+        local error=" ${lightGray}[${red}${EXIT}${lightGray}]"
     fi
 
-    local at="$(printf ${lightPurpleEx}@${resetEx})"
-    local hostname="$(printf ${lightMagentaEx}${HOSTNAME}${resetEx})"
-    local dir="$(printf ${lightGrayEx}[${lightGreenEx}"$(dirs)"${lightGrayEx}]${resetEx})"
+    PS1="${error} ${dot} ${user}${at}${hostname} ${doubleArrow} ${dir}\n> "
 }
