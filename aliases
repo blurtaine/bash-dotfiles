@@ -5,4 +5,5 @@ alias rm='rm -i'
 alias mv='rm -i'
 alias cp='cp -i'
 
-alias la='ls -la'
+alias l='ls --color=auto --group-directories-first'
+alias ll='ls -la'
