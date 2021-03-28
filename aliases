@@ -4,3 +4,5 @@ alias vim='nvim'
 alias rm='rm -i'
 alias mv='rm -i'
 alias cp='cp -i'
+
+alias la='ls -la'

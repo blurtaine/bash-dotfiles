@@ -1,0 +1,5 @@
+function dirColors() {
+    local di="4;33"
+
+    LS_COLORS="di={di}"
+}
