@@ -8,7 +8,6 @@
 [[ $DISPLAY ]] && shopt -s checkwinsize
 
 
-#[[ -f /etc/bash/bash_ps1 ]] && . /etc/bash/bash_ps1
 [[ -f /etc/bash/aliases ]] && . /etc/bash/aliases
 [[ -f /etc/bash/bash_dircolors ]] && . /etc/bash/bash_dircolors
 [[ -f /etc/bash/bash_globals ]] && . /etc/bash/bash_globals
@@ -27,13 +26,6 @@ function fallback_prompt_command() {
     PS1="\[\e[33m\]\u\[\e[m\]\[\e[35m\]@\[\e[m\]\[\e[34m\]\h\[\e[m\] \[\e[36m\]>\[\e[m\] [\[\e[32m\]\w\[\e[m\]]"
 }
 
-################# LS ######################
-
-#if [[ -f /etc/bash/bash_dircolors ]]; then
-#    source /etc/bash/bash_dircolors
-#fi
-
-#source /etc/bash/bash_dircolors
 
 ################# TERM ###################
 

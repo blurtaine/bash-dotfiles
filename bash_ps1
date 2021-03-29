@@ -60,5 +60,11 @@ function prompt_command() {
         local error=" ${lightGray}[${red}${EXIT}${lightGray}]"
     fi
 
-    PS1="${error} ${dot} ${user}${at}${hostname} ${doubleArrow} ${dir}\n> "
+            
+    if [ -f /usr/share/git/completion/git-prompt.sh ]; then                     # Enable __git_ps1
+        . /usr/share/git/completion/git-prompt.sh
+    fi
+
+    #PS1="${error} ${dot} ${user}${at}${hostname} ${doubleArrow} ${dir} ${gitBranchColored}\n> "
+    PS1="${error} ${dot} ${user}${at}${hostname} ${doubleArrow} ${dir}$(__git_ps1)\n> "
 }
