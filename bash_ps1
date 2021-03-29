@@ -25,6 +25,8 @@ function prompt_command() {
     local redD="\[\e[1;31m\]"
     local blueD="\[\e[1;34m\]"
     local purpleD="\[\e[1;35m\]"
+    local lightYellowD="\[\e[1;93m\]"
+    local lightRedD="\[\e[1;91m\]"
 
     local lightGrayEx="\[\x1b[38;2;220;220;220m\]"
     local lightBlueEx="\[\x1b[38;2;102;217;239m\]"
@@ -40,19 +42,20 @@ function prompt_command() {
 
     local dot="$(printf ${white}'\xE2\x80\xA2'${lightGray})"
     local doubleArrow="$(printf ${white}'\xc2\xbb'${lightGray})"
+    local promptEnd="$(printf ${white}'\xEF\x81\x94'${resetEx})"
 
 ############## PROMPT PARTS ################
 
-    local at="$(printf ${lightCyan}@${lightGray})"
+    local at="$(printf ${cyan}@${lightGray})"
     local hostname="$(printf ${lightMagenta}${HOSTNAME}${lightGray})"
     local dir="$(printf ${lightGray}[${lightGreen}"$(dirs)"${lightGray}])"
     local error=""
 
 
     if [ "${UID}" -eq 0 ]; then
-        local user="$(printf ${lightRed}${USER}${lightGray})"
+        local user="$(printf ${lightRedD}${USER}${lightGray})"
     else
-        local user="$(printf ${lightYellow}${USER}${lightGray})"
+        local user="$(printf ${lightYellowD}${USER}${lightGray})"
     fi
        
 
@@ -64,7 +67,9 @@ function prompt_command() {
     if [ -f /usr/share/git/completion/git-prompt.sh ]; then                     # Enable __git_ps1
         . /usr/share/git/completion/git-prompt.sh
     fi
+    local gitBranchColored="${lightCyan}$(__git_ps1)${lightGray}"
 
     #PS1="${error} ${dot} ${user}${at}${hostname} ${doubleArrow} ${dir} ${gitBranchColored}\n> "
-    PS1="${error} ${dot} ${user}${at}${hostname} ${doubleArrow} ${dir}$(__git_ps1)\n> "
+    #PS1="${error} ${dot} ${user}${at}${hostname} ${doubleArrow} ${dir}$(__git_ps1)\n> "
+    PS1="${error} ${dot} ${user}${at}${hostname} ${doubleArrow} ${dir}${gitBranchColored}\n${promptEnd} "
 }
