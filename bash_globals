@@ -1,4 +1,4 @@
 export VISUAL=nvim
 export EDITOR=nvim
-export PAGER=nvim
 export BROWSER=qutebrowser
+export PAGER=less
