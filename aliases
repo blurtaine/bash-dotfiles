@@ -1,5 +1,6 @@
 alias sudo='sudo '
 alias vim='nvim'
+alias r='ranger'
 
 alias rm='rm -i'
 alias mv='rm -i'
