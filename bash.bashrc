@@ -9,7 +9,7 @@
 
 
 [[ -f /etc/bash/aliases ]] && . /etc/bash/aliases
-[[ -f /etc/bash/bash_dircolors ]] && . /etc/bash/bash_dircolors
+[[ -f /etc/bash/dircolors ]] && eval "$(dircolors -b /etc/bash/dircolors)"
 [[ -f /etc/bash/bash_globals ]] && . /etc/bash/bash_globals
 
 ################## PS1 ###################
@@ -29,15 +29,15 @@ function fallback_prompt_command() {
 
 ################# TERM ###################
 
-case ${TERM} in
-  xterm*|rxvt*|Eterm|aterm|kterm|gnome*)
-    PROMPT_COMMAND=${PROMPT_COMMAND:+$PROMPT_COMMAND; }'printf "\033]0;%s@%s:%s\007" "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/\~}"'
-
-    ;;
-  screen*)
-    PROMPT_COMMAND=${PROMPT_COMMAND:+$PROMPT_COMMAND; }'printf "\033_%s@%s:%s\033\\" "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/\~}"'
-    ;;
-esac
+#case ${TERM} in
+#  xterm*|rxvt*|Eterm|aterm|kterm|gnome*)
+#    PROMPT_COMMAND=${PROMPT_COMMAND:+$PROMPT_COMMAND; }'printf "\033]0;%s@%s:%s\007" #"${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/\~}"'
+#
+#    ;;
+#  screen*)
+#    PROMPT_COMMAND=${PROMPT_COMMAND:+$PROMPT_COMMAND; }'printf "\033_%s@%s:%s\033\\" #"${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/\~}"'
+#    ;;
+#esac
 
 [ -r /usr/share/bash-completion/bash_completion   ] && . /usr/share/bash-completion/bash_completion
 
