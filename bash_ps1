@@ -1,3 +1,5 @@
+#!/bin/bash             -       Added for Syntax Highlighting!
+
 # Building the Bash Prompt
 
 function prompt_command() {
@@ -22,25 +24,24 @@ function prompt_command() {
     local lightCyan="\[\e[0;96m\]"
     local white="\[\e[0;97m\]"
 
-    local cyanD="\[\e[1;36m\]"
-    local greenD="\[\e[1;32m\]"
-    local redD="\[\e[1;31m\]"
-    local blueD="\[\e[1;34m\]"
-    local purpleD="\[\e[1;35m\]"
-    local lightYellowD="\[\e[1;93m\]"
-    local lightRedD="\[\e[1;91m\]"
-
     local lightGrayEx="\[\x1b[38;2;220;220;220m\]"
     local lightBlueEx="\[\x1b[38;2;102;217;239m\]"
     local lightMagentaEx="\[\x1b[38;2;249;38;114m\]"
     local lightPurpleEx="\[\x1b[38;2;174;129;255m\]"
     local lightGreenEx="\[\x1b[38;2;166;226;46m\]"
     local lightYellowEx="\[\x1b[38;2;255;240;90m\]"
+    local lightYellowLimeEx="\[\x1b[38;2;200;216;64m\]"
+    local lightPurpleSaturatedEx="\[\x1b[38;2;132;83;200m\]"
+    local lightLimeEx="\[\x1b[38;2;158;255;55m\]"
 
 ############### SPECIAL CHARACTERS #############
     
     local resetColor="\[\e[0m\]"
     local resetEx="\[\x1b[0m\]"
+
+    local bold="\[\x1b[1m\]"
+    local italic="\[\x1b[3m\]"
+    local underline="\[\x1b[4m\]"
 
     local dot="$(printf ${white}'\xE2\x80\xA2'${lightGray})"
     local doubleArrow="$(printf ${white}'\xc2\xbb'${lightGray})"
@@ -49,7 +50,7 @@ function prompt_command() {
 ############## PROMPT PARTS ################
 
     local at="$(printf ${cyan}@${lightGray})"
-    local hostname="$(printf ${lightMagenta}${HOSTNAME}${lightGray})"
+    local hostname="$(printf ${lightPurpleSaturatedEx}${HOSTNAME}${lightGray})"
     local dir="$(printf ${lightGray}[${lightGreen}"$(dirs)"${lightGray}])"
     local error=""
 
@@ -57,7 +58,7 @@ function prompt_command() {
     if [ "${UID}" -eq 0 ]; then
         local user="$(printf ${lightRedD}${USER}${lightGray})"
     else
-        local user="$(printf ${lightYellowD}${USER}${lightGray})"
+        local user="$(printf ${bold}${lightLimeEx}${USER}${lightGray})"
     fi
        
 

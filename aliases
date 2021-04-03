@@ -1,3 +1,8 @@
+#!/bin/bash     -       Added for Syntax Highlighting!
+
+#Bash Aliases
+
+
 alias sudo='sudo '
 alias vim='nvim'
 alias r='ranger'
@@ -6,5 +11,10 @@ alias rm='rm -i'
 alias mv='rm -i'
 alias cp='cp -i'
 
-alias l='ls --color=auto --group-directories-first'
-alias ll='ls -la'
+alias ls='ls --color=auto --group-directories-first'
+alias l='ls -lh'
+alias ll='ls -l'
+alias lll='ls -lhAF'
+alias llll='ls -lAF'
+
+alias grep='grep --color=auto'
