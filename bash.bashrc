@@ -22,23 +22,10 @@ else
     export PROMPT_COMMAND=fallback_prompt_command
 fi
 
+[ -r /usr/share/bash-completion/bash_completion   ] && . /usr/share/bash-completion/bash_completion
+
 function fallback_prompt_command() {
     PS1="\[\e[33m\]\u\[\e[m\]\[\e[35m\]@\[\e[m\]\[\e[34m\]\h\[\e[m\] \[\e[36m\]>\[\e[m\] [\[\e[32m\]\w\[\e[m\]]"
 }
-
-
-################# TERM ###################
-
-#case ${TERM} in
-#  xterm*|rxvt*|Eterm|aterm|kterm|gnome*)
-#    PROMPT_COMMAND=${PROMPT_COMMAND:+$PROMPT_COMMAND; }'printf "\033]0;%s@%s:%s\007" #"${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/\~}"'
-#
-#    ;;
-#  screen*)
-#    PROMPT_COMMAND=${PROMPT_COMMAND:+$PROMPT_COMMAND; }'printf "\033_%s@%s:%s\033\\" #"${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/\~}"'
-#    ;;
-#esac
-
-[ -r /usr/share/bash-completion/bash_completion   ] && . /usr/share/bash-completion/bash_completion
 
 #source /etc/bash/aliases

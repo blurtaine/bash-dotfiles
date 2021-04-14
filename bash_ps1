@@ -29,10 +29,11 @@ function prompt_command() {
     local lightMagentaEx="\[\x1b[38;2;249;38;114m\]"
     local lightPurpleEx="\[\x1b[38;2;174;129;255m\]"
     local lightGreenEx="\[\x1b[38;2;166;226;46m\]"
-    local lightYellowEx="\[\x1b[38;2;255;240;90m\]"
+    local lightYellowEx="\[\e[38;2;255;240;90m\]"
     local lightYellowLimeEx="\[\x1b[38;2;200;216;64m\]"
-    local lightPurpleSaturatedEx="\[\x1b[38;2;132;83;200m\]"
-    local lightLimeEx="\[\x1b[38;2;158;255;55m\]"
+    local lightPurpleSatEx="\[\x1b[38;2;132;83;200m\]"
+    local lightLimeEx="\[\x1b[38;2;144;255;26m\]"
+    local lightMagentaDesatEx="\[\x1b[38;2;185;63;102m\]"
 
 ############### SPECIAL CHARACTERS #############
     
@@ -43,22 +44,23 @@ function prompt_command() {
     local italic="\[\x1b[3m\]"
     local underline="\[\x1b[4m\]"
 
-    local dot="$(printf ${white}'\xE2\x80\xA2'${lightGray})"
-    local doubleArrow="$(printf ${white}'\xc2\xbb'${lightGray})"
-    local promptEnd="$(printf ${white}'\xEF\x81\x94'${resetEx})"
+    local dot="$(printf ${lightYellowLimeEx}'\xE2\x80\xA2'${lightGray})"
+    local arrow="$(printf ${lightYellowLimeEx}'\xEF\x83\x9A'${lightGray})"
+    local doubleArrow="$(printf ${lightYellowLimeEx}'\xc2\xbb'${lightGray})"
+    local promptEnd="$(printf ${lightYellowLimeEx}'\xEF\x81\x94'${resetEx})"
 
 ############## PROMPT PARTS ################
 
-    local at="$(printf ${cyan}@${lightGray})"
-    local hostname="$(printf ${lightPurpleSaturatedEx}${HOSTNAME}${lightGray})"
-    local dir="$(printf ${lightGray}[${lightGreen}"$(dirs)"${lightGray}])"
+    local at="$(printf ${lightPurpleEx}@${lightGray})"
+    local hostname="$(printf ${lightMagentaEx}${HOSTNAME}${lightGray})"
+    local dir="$(printf ${lightGray}[${lightGreenEx}"$(dirs)"${lightGray}])"
     local error=""
 
 
     if [ "${UID}" -eq 0 ]; then
-        local user="$(printf ${lightRedD}${USER}${lightGray})"
+        local user="$(printf ${bold}${lightRedD}${USER}${lightGray})"
     else
-        local user="$(printf ${bold}${lightLimeEx}${USER}${lightGray})"
+        local user="$(printf ${bold}${lightBlueEx}${USER}${lightGray})"
     fi
        
 
@@ -74,5 +76,5 @@ function prompt_command() {
 
     #PS1="${error} ${dot} ${user}${at}${hostname} ${doubleArrow} ${dir} ${gitBranchColored}\n> "
     #PS1="${error} ${dot} ${user}${at}${hostname} ${doubleArrow} ${dir}$(__git_ps1)\n> "
-    PS1="${dot} ${error}${user}${at}${hostname} ${doubleArrow} ${dir}${gitBranchColored}\n${promptEnd} "
+    PS1="${dot} ${error}${user}${at}${hostname} ${arrow}${dir}${gitBranchColored}\n${promptEnd} "
 }

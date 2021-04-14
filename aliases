@@ -2,6 +2,7 @@
 
 #Bash Aliases
 
+alias sx='startx'
 
 alias sudo='sudo '
 alias vim='nvim'
