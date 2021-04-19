@@ -9,7 +9,7 @@ alias vim='nvim'
 alias r='ranger'
 
 alias rm='rm -i'
-alias mv='rm -i'
+alias mv='mv -i'
 alias cp='cp -i'
 
 alias ls='ls --color=auto --group-directories-first'
